@@ -1,23 +1,27 @@
-import { useState } from "react";
+import Task from "../Task/Task";
 import ProjectItem from "./project_item";
 
 
+interface Project {
+    name: string;
+    description: string;
+    Task : Task[];
+}
 
-const ProjectList = () => {
-    const initialProjects = [
-        {name: "Project 1", description: "Description 1"},
-        {name: "Project 2", description: "Description 2"},
-        {name: "Project 3", description: "Description 3"},
-        {name: "Project 4", description: "Description 4"},
-    ];
-    const [projects, setProjects] = useState(initialProjects);
+interface ProjectListProps {
+    projects: Project[];
+}
+
+
+const ProjectList = (props: ProjectListProps) => {
+
     return (
         <ul>
-            {projects.map(project => {
+            {props.projects.map(project => {
                 return(
                     <>  
                         <li>
-                            <ProjectItem name={project.name} description={project.description}/>
+                            <ProjectItem name={project.name} description={project.description} tasks={project.Task}/>
                         </li>
                     </>
             );

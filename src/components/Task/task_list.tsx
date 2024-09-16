@@ -1,22 +1,22 @@
+import Task from "./Task";
 import { TaskItem } from "./task_item";
 
-const TaskList = () => {
+interface TaskListProps {
+    tasks: Task[];
+}
+
+
+const TaskList = (props:TaskListProps) => {
     return (
         <div>
             <ul>
                 <li>
-                    <TaskItem name="Task 1" description="This is task 1" />
-                </li>
-                <li>
-                    <TaskItem name="Task 2" description="This is task 2" />
-                </li>
-                <li>
-                    <TaskItem name="Task 3" description="This is task 3" />
+                    {props.tasks.map((task) => (
+                        <TaskItem key={task.id} name={task.name} description={task.description} />
+                    ))}
                 </li>
             </ul>
-        {/* {tasks.map((task) => (
-            <TaskItem key={task.id} task={task} />
-        ))} */}
+                
         </div>
     );
 };
