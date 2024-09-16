@@ -1,4 +1,5 @@
 import { useLocation } from "react-router-dom";
+import TaskList from "../Task/task_list";
 
 interface ProjectDetailProps {
     name: string,
@@ -12,6 +13,7 @@ const ProjectDetail = () => {
         <div>
             <h1>{name}</h1>
             <p>{description}</p>
+            <TaskList/>
         </div>
     );
 }
