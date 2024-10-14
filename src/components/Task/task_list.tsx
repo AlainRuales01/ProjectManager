@@ -1,5 +1,5 @@
-import Task from "./Task";
 import { TaskItem } from "./task_item";
+import Task from "./task";
 
 interface TaskListProps {
     tasks: Task[];
@@ -10,11 +10,11 @@ const TaskList = (props:TaskListProps) => {
     return (
         <div>
             <ul>
-                <li>
+                <ol>
                     {props.tasks.map((task) => (
-                        <TaskItem key={task.id} name={task.name} description={task.description} />
+                        <TaskItem key={task.id} id={task.id} name={task.name} description={task.description} taskState={task.taskState} />
                     ))}
-                </li>
+                </ol>
             </ul>
                 
         </div>

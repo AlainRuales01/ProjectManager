@@ -69,7 +69,7 @@ function App() {
   return (
     
       <BrowserRouter>
-      <ProjectContext.Provider value={{projects, setState}}>
+        <ProjectContext.Provider value={{projects, setState}}>
           <Routes>
             <Route path="/" element={<Home /> } />
             <Route path="/project" element={<ProjectIndex />} />

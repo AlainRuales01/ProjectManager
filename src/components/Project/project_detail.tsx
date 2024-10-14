@@ -1,8 +1,10 @@
 import { useLocation } from "react-router-dom";
 import TaskList from "../Task/task_list";
-import Task from "../Task/Task";
+import Task from "../Task/task";
+
 
 interface ProjectDetailProps {
+    id: number,
     name: string,
     description: string
     tasks: Task[]
@@ -10,12 +12,12 @@ interface ProjectDetailProps {
 
 const ProjectDetail = () => {
     const location = useLocation();
-    const {name, description, tasks} = location.state as ProjectDetailProps;
+    const { name, description, tasks} = location.state as ProjectDetailProps;
     return (
         <div>
             <h1>{name}</h1>
             <p>{description}</p>
-            <TaskList tasks={tasks} />
+            <TaskList tasks={tasks}/>
         </div>
     );
 }

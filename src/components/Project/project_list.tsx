@@ -1,35 +1,27 @@
-import Task from "../Task/Task";
-import ProjectItem from "./project_item";
+import { useContext } from "react";
+import { ProjectContext } from "./project_context";
+import { Link } from "react-router-dom";
 
 
-interface Project {
-    name: string;
-    description: string;
-    Task : Task[];
-}
-
-interface ProjectListProps {
-    projects: Project[];
-}
 
 
-const ProjectList = (props: ProjectListProps) => {
+const ProjectList = () => {
+    const contextProjects = useContext(ProjectContext);
 
     return (
         <ul>
-            {props.projects.map(project => {
-                return(
-                    <>  
-                        <li>
-                            <ProjectItem name={project.name} description={project.description} tasks={project.Task}/>
-                        </li>
-                    </>
-            );
-            })}
+            {contextProjects.projects.map(project => 
+                <ol key={project.id}>
+                    <div className="flex">
+                    <p>{project.name} {project.description}</p>
+                    <Link to={`/project/detail`} state={{ name: project.name, description: project.description, tasks: project.Task, contextProjects}}>
+                        View Details
+                    </Link>
+                    </div>
+                </ol>
+            )}
         </ul>
-            
-
     );
-}
+}  
 
 export default ProjectList;

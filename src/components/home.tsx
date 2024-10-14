@@ -1,11 +1,10 @@
-import ProjectIndex from "./Project/project_index";
-
+import { Link } from "react-router-dom";
 
 const Home = () => {
     return (
         <div>
             <h1>Home</h1>
-            <ProjectIndex/>
+            <Link to="/project">Projects</Link>
         </div>
     )
 }
